@@ -1,6 +1,5 @@
 package com.example.library.service;
 
-import com.example.library.entity.Address;
 import com.example.library.entity.Author;
 import com.example.library.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,10 @@ public class AuthorService {
 
     public Author getById(int id){
         return authorRepository.findById(id).get();
+    }
+
+    public void delete(int id){
+        authorRepository.deleteById(id);
     }
 }
 

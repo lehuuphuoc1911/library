@@ -31,4 +31,8 @@ public class AddressService {
     public Address getById(int id){
         return addressRepository.findById(id).get();
     }
+
+    public void delete(int id){
+        addressRepository.deleteById(id);
+    }
 }
