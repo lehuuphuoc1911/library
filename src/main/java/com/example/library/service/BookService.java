@@ -13,10 +13,26 @@ public class BookService {
     @Autowired
     BookRepository bookRepository;
 
+    @Autowired
+    AuthorService authorService;
+
+    @Autowired
+    LibraryService libraryService;
+
     public BookService(){};
 
-    public Book add(Book author){
-        return bookRepository.save(author);
+    public Book add(Book book){
+        try{
+            book.setAuthor(authorService.getById(book.getAuthor().getId()));
+        } catch (Exception e){
+            System.out.println("invalid author id");
+        }
+        try{
+            book.setLibrary(libraryService.getById(book.getLibrary().getId()));
+        } catch (Exception e){
+            System.out.println("invalid library id");
+        }
+        return bookRepository.save(book);
     }
 
     public List<Book> getAll(){
@@ -34,5 +50,13 @@ public class BookService {
 
     public void delete(int id){
         bookRepository.deleteById(id);
+    }
+
+    public List<Book> getAllBookInLibrary(int id){
+        return bookRepository.getAllBookInLibrary(id);
+    }
+
+    public List<Book> getAllBookOfAuthor(int id){
+        return bookRepository.getAllBookOfAuthor(id);
     }
 }

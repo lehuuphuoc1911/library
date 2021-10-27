@@ -29,6 +29,9 @@ public class AddressService {
     }
 
     public Address getById(int id){
+        if(addressRepository.existsById(id)==false){
+            return new Address();
+        }
         return addressRepository.findById(id).get();
     }
 

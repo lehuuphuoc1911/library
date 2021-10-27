@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/address")
 public class AddressController {
     @Autowired
-    AddressService addressService;
+    private AddressService addressService;
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public Address add(@RequestBody Address address){
@@ -24,7 +24,7 @@ public class AddressController {
 
     @RequestMapping(path = "/get", method = RequestMethod.GET)
     public Address get(@Param("id") int id){
-        return addressService.getById(id);
+            return addressService.getById(id);
     }
 
     @RequestMapping(path = "/getAll",method = RequestMethod.GET)

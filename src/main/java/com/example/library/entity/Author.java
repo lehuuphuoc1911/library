@@ -1,5 +1,7 @@
 package com.example.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -20,8 +22,11 @@ public class Author {
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<Book> books;
+
+
 /*
     @OneToOne
     @JoinColumn(name = "address_id")

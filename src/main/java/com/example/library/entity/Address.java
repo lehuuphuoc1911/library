@@ -1,6 +1,8 @@
 package com.example.library.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Address {
     @Column(nullable = false)
     private String location;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "address")
     private Library library;
 

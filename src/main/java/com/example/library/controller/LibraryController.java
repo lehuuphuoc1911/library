@@ -1,14 +1,13 @@
 package com.example.library.controller;
 
 
+import com.example.library.entity.Book;
 import com.example.library.entity.Library;
+import com.example.library.service.BookService;
 import com.example.library.service.LibraryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,7 +15,10 @@ import java.util.List;
 @RequestMapping("/library")
 public class LibraryController {
     @Autowired
-    LibraryService libraryService;
+    private LibraryService libraryService;
+
+    @Autowired
+    private BookService bookService;
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public Library add(@RequestBody Library library){
@@ -36,5 +38,10 @@ public class LibraryController {
     @RequestMapping(path = "/delete", method = RequestMethod.DELETE)
     public void delete(@Param("id") int id){
         libraryService.delete(id);
+    }
+
+    @RequestMapping(path = "/{id}/getAllBook")
+    public  List<Book> getAllBook(@PathVariable("id") int id){
+        return bookService.getAllBookInLibrary(id);
     }
 }

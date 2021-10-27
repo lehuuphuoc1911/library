@@ -1,5 +1,6 @@
 package com.example.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Library {
     @RestResource(path = "libraryAddress", rel="address")
     private Address address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "library")
     private List<Book> books;
 

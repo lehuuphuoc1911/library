@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/book")
 public class BookController {
     @Autowired
-    BookService bookService;
+    private BookService bookService;
 
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public Book add(@RequestBody Book book){
