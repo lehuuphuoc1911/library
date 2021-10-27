@@ -23,7 +23,7 @@ public class Author {
     private Date dateOfBirth;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "author")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<Book> books;
 
 

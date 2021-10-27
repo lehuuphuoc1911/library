@@ -21,7 +21,7 @@ public class Library {
     private Address address;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "library")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "library")
     private List<Book> books;
 
     public int getId() {

@@ -16,7 +16,7 @@ public class Address {
     private String location;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "address")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
     private Library library;
 
 
